@@ -1,0 +1,41 @@
+<div class="page-wrapper">
+    <div class="container-xl">
+        <div class="page-header d-print-none">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <h2 class="page-title">Repertório: <%= @repertory.name %></h2>
+                        <h3>Criado por: <%= @repertory.user.name %></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-body">
+            <div class="container-xl">
+
+                <div class="card">
+                  <ul class="nav nav-tabs" data-bs-toggle="tabs" role="tablist">
+                    <% @repertory.musics.each_with_index do |music, index| %>
+                    <li class="nav-item" role="presentation">
+                      <a href="#tabs-home-<%= index %>" class="nav-link <%= index == 0 ? 'active' : '' %>" data-bs-toggle="tab" aria-selected="true" role="tab"><%= music.name_and_author %></a>
+                    </li>
+                    <% end %>   
+                  </ul>
+                  <div class="card-body">
+                    <div class="tab-content">
+                    <% @repertory.musics.each_with_index do |music, index| %>
+                        <div class="tab-pane show active" id="tabs-home-<%= index %>" role="tabpanel">
+                            <% if music.chords.empty? %>
+                                <%= simple_format(music.lyrics) %>
+                            <% else %>
+                                <pre><%= music.chords %></pre>
+                            <%end%>
+                        </div>
+                    <% end %>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

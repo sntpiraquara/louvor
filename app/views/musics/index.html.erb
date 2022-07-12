@@ -28,6 +28,7 @@
               <tr>
                 <th><%= t("activerecord.attributes.music.name") %></th>
                 <th><%= t("activerecord.attributes.music.author") %></th>
+                <th><%= t("activerecord.attributes.music.chords") %></th>
                 <th class="w-1"></th>
               </tr>
             </thead>
@@ -35,9 +36,16 @@
             <tbody>
             <% @musics.each do |music| %>
               <tr>
-                <td><%= music.name %></td>
+                <td>
+                  <a href="<%= music_path(music) %>"><%= music.name %></a>
+                </td>
                 <td class="text-muted">
                   <%= music.author %>
+                </td>
+                <td>
+                  <% unless music.chords.empty? %>
+                  <a href="<%= music_path(music) %>?tab=chords">Cifra</a>
+                  <% end %>
                 </td>
                 <td>
                   <a href="<%= edit_music_path(music) %>">Editar</a>

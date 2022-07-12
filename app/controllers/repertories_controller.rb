@@ -1,5 +1,6 @@
 class RepertoriesController < ApplicationController
-  before_action :set_repertory, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:public_show]
+  before_action :set_repertory, only: %i[show public_show edit update destroy]
 
   # GET /repertories or /repertories.json
   def index
@@ -8,6 +9,10 @@ class RepertoriesController < ApplicationController
 
   # GET /repertories/1 or /repertories/1.json
   def show; end
+
+  def public_show
+    self.class.layout 'public'
+  end
 
   # GET /repertories/new
   def new

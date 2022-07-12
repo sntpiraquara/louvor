@@ -1,6 +1,18 @@
 <div id="<%= dom_id music %>">
-  <p>
-    <strong><%= t('activerecord.attributes.music.lyrics') %>:</strong>
-    <%= music.chords %>
-  </p>
+ <div class="row">
+    <div class="col">
+      <h2>Letra</h2>
+      <p>
+        <strong><%= t('activerecord.attributes.music.lyrics') %>:</strong>
+        <%= simple_format(music.lyrics) %>
+      </p>
+    </div>
+
+<% unless music.chords.empty? %>
+    <div class="col">
+      <h2>Cifra</h2>
+      <pre><%= music.chords %></pre>
+    </div>
+  <% end %>
+  </div>
 </div>
