@@ -1,0 +1,31 @@
+<%= form_with(model: repertory, :class => 'card') do |form| %>
+  <div class="card-body">
+    <% if repertory.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(repertory.errors.count, "error") %> prohibited this repertory from being saved:</h2>
+
+        <ul>
+          <% repertory.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :music_ids, class: "form-label" %>
+      <%= form.collection_select :music_ids, Music.all, :id, :name_and_author, {}, {multiple: true, class: "form-control"} %>
+    </div>
+  </div>
+
+  <div class="card-footer text-end">
+    <div class="d-flex">
+      <%= form.submit('Salvar', class: "btn btn-primary ms-auto") %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Repertories</h1>
+
+<div id="repertories">
+  <% @repertories.each do |repertory| %>
+    <%= render repertory %>
+    <p>
+      <%= link_to "Show this repertory", repertory %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New repertory", new_repertory_path %>

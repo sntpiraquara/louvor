@@ -33,6 +33,8 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+gem "faraday"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -49,6 +51,8 @@ gem "devise"
 
 # Use Sass to process CSS
 gem "sassc-rails"
+
+gem "active_link_to"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -69,6 +73,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   
+  gem "pry"
   gem 'pry-rails'
 end
 

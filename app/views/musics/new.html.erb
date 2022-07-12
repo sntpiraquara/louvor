@@ -1,0 +1,21 @@
+<div class="container-xl">
+  <div class="page-header d-print-none">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+        <h2 class="page-title">Nova Música</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-cards">
+    <div class="col-12">
+      <%= render "form", music: @music %>
+    </div>
+  </div>
+
+  <br>
+
+  <div>
+    <%= link_to "Voltar as músicas", musics_path %>
+  </div>
+</div>

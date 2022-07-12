@@ -1,0 +1,30 @@
+<div class="container-xl">
+  <div class="page-header d-print-none">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+        <h2 class="page-title"><%= @music.name %> - <%= @music.author %></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="container-xl">
+    <div class="col-12">
+      <div class="card">
+       <div class="card-body">
+          <%= render 'template/alerts' %>
+
+          <%= render @music %>
+
+          <div class="mb-3">
+            <%= link_to "Editar esta música", edit_music_path(@music) %> |
+            <%= link_to "Voltar a lista", musics_path %>
+          </div>
+            
+          <%= button_to "Remover música", @music, method: :delete, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

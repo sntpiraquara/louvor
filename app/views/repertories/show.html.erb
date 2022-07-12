@@ -1,0 +1,42 @@
+<div class="container-xl">
+  <div class="page-header d-print-none">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+          <h2 class="page-title">Repertório: <%= @repertory.name %></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="container-xl">
+    <div class="col-12">
+      <%= render 'template/alerts' %>
+
+      <div class="card">
+        <div class="card-body">
+          
+          <div class="mb-3">
+            <label for="" class="form-label">Músicas</label>
+
+            <ul>
+            <% @repertory.musics.each do |music| %>
+                <li>
+                  <%= link_to music.name_and_author, music_path(music) %>
+                </li>
+            <% end %>
+            </ul>
+          </div>
+
+          
+
+          <a href="<%= edit_repertory_path(@repertory)%>" class="btn btn-primary mb-2">Editar Repertório</a>
+          
+          <%= button_to "Excluir esse repertório", @repertory, method: :delete, class: "btn btn-danger" %>
+        </div>
+      </div>      
+    </div>
+
+    <%= link_to "Voltar aos repertórios", root_path %>
+  </div>
+</div>

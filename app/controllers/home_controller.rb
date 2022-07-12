@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @repertories = Repertory.where(user: current_user).all
+  end
 end
