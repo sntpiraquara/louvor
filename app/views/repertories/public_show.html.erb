@@ -14,26 +14,34 @@
             <div class="container-xl">
 
                 <div class="card">
-                  <ul class="nav nav-tabs" data-bs-toggle="tabs" role="tablist">
-                    <% @repertory.musics.each_with_index do |music, index| %>
-                    <li class="nav-item" role="presentation">
-                      <a href="#tabs-home-<%= index %>" class="nav-link <%= index == 0 ? 'active' : '' %>" data-bs-toggle="tab" aria-selected="true" role="tab"><%= music.name_and_author %></a>
-                    </li>
-                    <% end %>   
-                  </ul>
+                 
                   <div class="card-body">
-                    <div class="tab-content">
+                    <div class="accordion" id="accordion-musics">
                     <% @repertory.musics.each_with_index do |music, index| %>
-                        <div class="tab-pane show active" id="tabs-home-<%= index %>" role="tabpanel">
-                            <% if music.chords.empty? %>
-                                <%= simple_format(music.lyrics) %>
-                            <% else %>
-                                <pre><%= music.chords %></pre>
-                            <%end%>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-<%= index %>">
+                                <button
+                                    class="accordion-button <%= index == 0 ? '' : 'collapsed' %>"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-<%= index %>"
+                                    aria-expanded="true">
+                                <%= music.name_and_author%>
+                                </button>
+                            </h2>
+                                
+                            <div id="collapse-<%= index %>" class="accordion-collapse collapse <%= index == 0 ? 'show' : '' %>" data-bs-parent="#accordion-musics">
+                                <div class="accordion-body pt-0">
+                                    <% if music.chords.empty? %>
+                                        <%= simple_format(music.lyrics) %>
+                                    <% else %>
+                                        <pre><%= music.chords %></pre>
+                                    <%end%>
+                                </div>
+                            </div>
                         </div>
                     <% end %>
                     </div>
-                  </div>
                 </div>
             </div>
         </div>
