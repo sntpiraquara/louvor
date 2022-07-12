@@ -29,6 +29,13 @@
       <br />
       <button type="button" data-target="#music_lyrics" class="btn btn-secondary musics-btn-fetch-lyrics">Buscar letra</button>
     </div>
+
+    <div class="mb-3">
+      <%= form.label :chords, class: 'form-label'  %>
+      <%= form.text_area :chords, rows: 10,class: 'form-control' %>
+      <br />
+      <button type="button" data-target="#music_chords" class="btn btn-secondary musics-btn-fetch-chords">Buscar cifra</button>
+    </div>
   </div>
   <div class="card-footer">
     <%= form.submit('Salvar', class: "btn btn-primary ms-auto") %>
